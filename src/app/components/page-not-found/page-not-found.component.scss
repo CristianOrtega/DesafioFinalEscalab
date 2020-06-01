@@ -1,0 +1,109 @@
+* {
+    font-family: Ubuntu, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #1e234d;
+    height: 100%;
+  }
+  
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .wrapper{
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    width: fit-content;
+    text-align: center;
+    z-index: 4;
+  
+  
+  
+  span {
+    &:first-letter{
+    letter-spacing: 12vmax; 
+    }
+    position: relative;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20.4em;
+    display: block;
+    overflow: hidden;
+    width: fit-content;
+    height: max-content;
+    &:before{
+      content:'';
+      background-image: url('https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/2Q75SUKMBZCYNIZHF4MXYQBHZY.jpg');
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;    
+      animation: rotateIn 1.6s infinite;
+    }
+  }
+   p {
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 0;
+    line-height: 22px;
+   }
+  
+   button {
+        background-color: #f96e4d;
+      border: 0;
+      padding: 11px 22px;
+      border-radius: 50px;
+      color: #fff;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: 900;
+   }
+  }
+  
+  
+  @keyframes spin {
+    
+    from {
+      transform: rotate( 0deg );
+    }
+    
+    to {
+      transform: rotate( -360deg );
+    }
+  }
+  
+  @keyframes rotateIn {
+    from {
+      transform: rotate( 0deg ) scale(0.2);
+      opacity: 0;
+    }
+    to {
+      transform: rotate( 360deg ) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  
+  .space {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    margin-top: 0;
+    margin-left: 0;
+    background-size: cover;
+    backface-visibility: visible;
+    background-image: url('https://c.wallhere.com/photos/79/ff/1920x1080_px_Breaking_Bad_heisenberg_Meth_Shattered_Walter_White-562366.jpg!d');
+  }
