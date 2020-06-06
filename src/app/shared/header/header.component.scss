@@ -1,9 +1,15 @@
+.mat-toolbar.mat-primary {
+  background: #000000;
+    color: #fff;
+}
+
+
 nav > a {
     padding: 5px;
     text-decoration: none;
   }
   nav > a.active {
-    background-color: #016936;
+    background-color: #ffd740;
   }
   .header-row{
     width: 100%;

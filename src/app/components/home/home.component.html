@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="container">
+    <div>
+        <p>Si ver solo los personajes según la seríe presiona en los enlaces:</p>
+        <ul>
+            <li>
+                <a mat-button (click)="onSearchBySerieName('')">Ver todos</a>
+            </li>
+            <li>
+                <a mat-button (click)="onSearchBySerieName('Breaking Bad')">Breaking Bad</a>
+            </li>
+            <li>
+                <a mat-button (click)="onSearchBySerieName('Better Call Saul')">Better Call Saul</a>
+            </li>
+        </ul>
+    <div>
+    <div>
+        <app-search-character (filter)="onSearch($event)" (tryLuck)="onTryLuck($event)"></app-search-character>
+    </div>
+    <div class="text-center" *ngIf="characterList.length > 1">
+        <pagination-controls (pageChange)="pageChanged($event)" previousLabel='Anterior' nextLabel='Siguiente' id='characterGrid'></pagination-controls>
+    </div>  
+    <div class="card-grid">
+        <app-character *ngFor="let character of characterList | paginate: { id: 'characterGrid', 
+                        itemsPerPage: pageSize, 
+                        currentPage: page, 
+                        totalItems: totalRecords }" [character]="character"></app-character>  
+    </div>
+    <div class="text-center" *ngIf="characterList.length > 1">
+        <pagination-controls (pageChange)="pageChanged($event)" previousLabel='Anterior' nextLabel='Siguiente' id='characterGrid'></pagination-controls>
+    </div>     
+</div>
