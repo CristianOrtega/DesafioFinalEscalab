@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Filter } from '../../../core/model/filter';
 
 @Component({
   selector: 'app-search-episode',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchEpisodeComponent implements OnInit {
 
-  constructor() { }
+  @Output() public filter = new EventEmitter<Filter>();
+  serieId: number;
+  serieSelect: string;
+
+  constructor() { 
+    this.serieSelect = '';
+  }
 
   ngOnInit() {
+  }
+
+  onSearch(): void {
+    let search: Filter = new Filter();
+    search.serieId = this.serieId;
+    search.serieName = this.serieSelect;
+    this.filter.emit(search);
   }
 
 }

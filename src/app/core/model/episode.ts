@@ -5,7 +5,8 @@ interface IEpisode {
     air_date: string;
     characters: string[];
     episode: number;
-    series: string
+    series: string;
+    serieImg: string;
 }
 
 export class Episode implements IEpisode {
@@ -15,5 +16,6 @@ export class Episode implements IEpisode {
     air_date: string;
     characters: string[];
     episode: number;
-    series: string
+    series: string;
+    serieImg: string;
 }
