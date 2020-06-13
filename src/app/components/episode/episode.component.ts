@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { take } from 'rxjs/operators';
 
+import swal from 'sweetalert2';
+
 import { EpisodeService } from '../../core/services/episode.service';
 import { Episode } from '../../core/model/episode';
 import { Filter } from '../../core/model/filter';
@@ -29,21 +31,94 @@ export class EpisodeComponent implements OnInit {
   }
 
   onSearch(filter: Filter): void {
-    debugger;
+    if (filter.serieId || (filter.serieName || filter.serieName !== '')) {
+      let searchingById = false;
+      let searchingBySerie = false;
+      
+      if (!isNaN(filter.serieId) && filter.serieId > 0 ) {
+        searchingById = true;
+      }
+
+      if (filter.serieName && filter.serieName !== '') {
+        searchingBySerie = true;
+      }
+
+      if (searchingById && searchingBySerie) {
+        this.specialSearch(filter.serieId, filter.serieName);
+      } else if (searchingById) {
+        this.findEpisodeById(filter.serieId);
+      } else if (searchingBySerie) {
+        this.findEpisodeBySerie(filter.serieName);
+      }
+
+
+    } else {
+      this.findAllEpisodes();
+    }
   }
 
   pageChanged(page: number): void {
     this.page = page;
   }
 
-  private findAllEpisodes(): void {
-    this.episodeService.findAllEpisodes().pipe(take(1)).subscribe(resp => {
+  private findEpisodeById(id: number): void {
+    this.episodeService.findEpisodeById(id).pipe(take(1)).subscribe(
+      resp => {
+      if (resp.length > 0) {
+        this.episodeList = resp;
+        this.episodeList.forEach(episode => {
+          episode.serieImg = this.getImageForSerie(episode.series);
+        });
+        this.totalRecords = this.episodeList.length;
+      } else {
+        swal.fire('Ups', `La ID ${id} que estas buscando no existe.`, 'error');
+      }
+    },
+    error => {
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
+    });
+  }
+
+  private findEpisodeBySerie(serie: string): void {
+    this.episodeService.findEpisodeBySerie(serie).pipe(take(1)).subscribe(
+      resp => {
       this.episodeList = resp;
       this.episodeList.forEach(episode => {
         episode.serieImg = this.getImageForSerie(episode.series);
       });
       this.totalRecords = this.episodeList.length;
+    },
+      error => {
+        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
     });
+  }
+
+  private findAllEpisodes(): void {
+    this.episodeService.findAllEpisodes().pipe(take(1)).subscribe
+    (resp => {
+      this.episodeList = resp;
+      this.episodeList.forEach(episode => {
+        episode.serieImg = this.getImageForSerie(episode.series);
+      });
+      this.totalRecords = this.episodeList.length;
+    },
+    error => {
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
+    });
+  }
+
+  private specialSearch(id: number, serie: string) {
+    const isIDFound = ( { episode_id }) => episode_id === id;
+    
+    const newEpisodeArray = this.episodeList.find(isIDFound);
+
+    if (newEpisodeArray && newEpisodeArray.series === serie) {
+      this.episodeList = [];
+      this.episodeList.push(newEpisodeArray);
+    } else {
+      swal.fire('Ups', `La ID ${id} que estas buscando no existe.`, 'error');
+    }
+
   }
 
   private getImageForSerie(serie: string): string {

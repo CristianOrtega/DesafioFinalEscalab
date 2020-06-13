@@ -23,7 +23,7 @@ export class EpisodeService {
 
   // Servicio N°8
   findEpisodeById(id: number) {
-    return this.http.get<any>(`${environment.BREAKING_BAD_API}/episodes?series=${id}`);
+    return this.http.get<any>(`${environment.BREAKING_BAD_API}/episodes/${id}`);
   }
 
 }
