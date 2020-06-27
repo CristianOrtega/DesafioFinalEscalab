@@ -19,7 +19,6 @@ export class SearchCharacterComponent implements OnInit {
   ngOnInit() {
   }
 
-
   onSearch() : void {
     this.filter.emit(this.characterName);
   }

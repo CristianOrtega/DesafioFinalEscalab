@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+.spinner {
+  margin: auto;
+}
+
+
 @media (min-width: 510px) {
   
     .container {
@@ -21,6 +26,10 @@
     .text-center {
       text-align: center;
     }
+
+    .spinner {
+      margin: auto;
+  }  
   
 }
 

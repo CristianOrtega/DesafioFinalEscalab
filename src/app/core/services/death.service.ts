@@ -17,13 +17,13 @@ export class DeathService {
   }
 
   // Servicio N°10
-  findRandomDeath(serie: string) {
-    return this.http.get<any>(`${environment.BREAKING_BAD_API}/episodes?series=${serie}`);
+  findRandomDeath() {
+    return this.http.get<any>(`${environment.BREAKING_BAD_API}/random-death`);
   }
 
   // Servicio N°11
-  findEpisodeById(id: number) {
-    return this.http.get<any>(`${environment.BREAKING_BAD_API}/episodes?series=${id}`);
+  findDeathCount() {
+    return this.http.get<any>(`${environment.BREAKING_BAD_API}/death-count`);
   }
 
 }

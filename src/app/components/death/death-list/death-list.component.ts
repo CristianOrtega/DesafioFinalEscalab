@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Death } from '../../../core/model/death';
 
 @Component({
   selector: 'app-death-list',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./death-list.component.scss']
 })
 export class DeathListComponent implements OnInit {
+
+  @Input() death: Death;
 
   constructor() { }
 

@@ -7,6 +7,7 @@ interface IDeath {
     season: number;
     episode: number;
     number_of_deaths: number;
+    img: string;
 }
 
 export class Death implements IDeath {
@@ -18,4 +19,5 @@ export class Death implements IDeath {
     season: number;
     episode: number;
     number_of_deaths: number;
+    img: string;
 }

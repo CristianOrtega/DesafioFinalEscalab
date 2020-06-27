@@ -19,11 +19,13 @@ export class EpisodeComponent implements OnInit {
   pageSize: number;
   page: number;
   totalRecords: number;
+  loading: boolean;
 
   constructor(private episodeService: EpisodeService) { 
     this.page = 1;
     this.pageSize = 4;
     this.episodeList = [];
+    this.loading = true;
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class EpisodeComponent implements OnInit {
   }
 
   onSearch(filter: Filter): void {
+    this.loading = true;
     if (filter.serieId || (filter.serieName || filter.serieName !== '')) {
       let searchingById = false;
       let searchingBySerie = false;
@@ -50,8 +53,6 @@ export class EpisodeComponent implements OnInit {
       } else if (searchingBySerie) {
         this.findEpisodeBySerie(filter.serieName);
       }
-
-
     } else {
       this.findAllEpisodes();
     }
@@ -73,9 +74,10 @@ export class EpisodeComponent implements OnInit {
       } else {
         swal.fire('Ups', `La ID ${id} que estas buscando no existe.`, 'error');
       }
+      this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -87,9 +89,10 @@ export class EpisodeComponent implements OnInit {
         episode.serieImg = this.getImageForSerie(episode.series);
       });
       this.totalRecords = this.episodeList.length;
+      this.loading = false;
     },
-      error => {
-        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
+    error => {
+        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -101,9 +104,10 @@ export class EpisodeComponent implements OnInit {
         episode.serieImg = this.getImageForSerie(episode.series);
       });
       this.totalRecords = this.episodeList.length;
+      this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste por favor contacte a su proveedor', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -116,9 +120,9 @@ export class EpisodeComponent implements OnInit {
       this.episodeList = [];
       this.episodeList.push(newEpisodeArray);
     } else {
-      swal.fire('Ups', `La ID ${id} que estas buscando no existe.`, 'error');
+      swal.fire('Ups', `La ID ${id} que estas buscando no existe en la categoría seleccionada.`, 'error');
     }
-
+    this.loading = false;
   }
 
   private getImageForSerie(serie: string): string {
