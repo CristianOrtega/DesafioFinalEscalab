@@ -58,7 +58,7 @@ export class DeathComponent implements OnInit {
       this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -69,7 +69,7 @@ export class DeathComponent implements OnInit {
       this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -80,7 +80,7 @@ export class DeathComponent implements OnInit {
         }
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 

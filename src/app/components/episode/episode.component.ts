@@ -77,7 +77,7 @@ export class EpisodeComponent implements OnInit {
       this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -92,7 +92,7 @@ export class EpisodeComponent implements OnInit {
       this.loading = false;
     },
     error => {
-        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 
@@ -107,7 +107,7 @@ export class EpisodeComponent implements OnInit {
       this.loading = false;
     },
     error => {
-      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema puede que el servicio no este funcionando.', 'error');
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
     });
   }
 

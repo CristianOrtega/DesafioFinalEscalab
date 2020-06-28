@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DeathComponent } from './death.component';
-import { AuthGuard } from '../../shared/guards/auth.guard';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
-    component: DeathComponent
+    component: LoginComponent
   }
 ];
 
@@ -16,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DeathRoutingModule { }
+export class UserRoutingModule { }

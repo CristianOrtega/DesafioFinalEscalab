@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +24,10 @@ const routes: Routes = [
       {
         path: 'deaths',
         loadChildren: () => import('./components/death/death.module').then(m => m.DeathModule)
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
       },
     ]
   },

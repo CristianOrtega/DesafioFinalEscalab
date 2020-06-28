@@ -6,6 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
+import { environment } from '../environments/environment';
+
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -20,6 +26,8 @@ import { LayoutComponent } from './components/layout/layout.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     MaterialModule,
     SharedModule
   ],

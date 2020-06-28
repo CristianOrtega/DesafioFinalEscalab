@@ -125,6 +125,10 @@
               "devServerTarget": "breaking-bad-api:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
