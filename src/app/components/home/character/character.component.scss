@@ -6,6 +6,10 @@
     transition: all 0.5s;
 }
 
+.character-image {
+  height: 300px;
+}
+
 .character-card:hover {
   background: #2b0606;
   transform: scale(1.1);

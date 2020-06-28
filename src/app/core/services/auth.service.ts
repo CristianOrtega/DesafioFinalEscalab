@@ -16,11 +16,13 @@ export class AuthService {
     this.userData$ = afAuth.authState;
   }
 
+  // Servicio N°12
   login(user: User) {
     const { email, password } = user;
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  // Servicio N°13
   logout() {
     this.afAuth.auth.signOut()
       .then(() => {

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(form)
       .then(res => {
           debugger;
-          swal.fire('En hora buena', 'Ahora puedes ver los spoilers de la serie!', 'success');
+          swal.fire('Enhorabuena', 'Ahora puedes ver los spoilers de la serie!', 'success');
           this.router.navigate(['/deaths']);
       })
       .catch(error => {

@@ -1,6 +1,16 @@
 .mat-toolbar.mat-primary {
   background: #000000;
-    color: #fff;
+  color: #fff;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 100px;
+}
+
+.logo {
+  height: 70px;
+  background-color: white;
+  padding: 7px;
 }
 
 

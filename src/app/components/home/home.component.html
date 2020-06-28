@@ -1,18 +1,12 @@
 <div class="container">
     <div>
-        <p>Si ver solo los personajes según la seríe presiona en los enlaces:</p>
-        <ul>
-            <li>
-                <a mat-button (click)="onSearchBySerieName('')">Ver todos</a>
-            </li>
-            <li>
-                <a mat-button (click)="onSearchBySerieName('Breaking Bad')">Breaking Bad</a>
-            </li>
-            <li>
-                <a mat-button (click)="onSearchBySerieName('Better Call Saul')">Better Call Saul</a>
-            </li>
-        </ul>
-    <div>
+        <p>Puedes ver los personajes según la seríe presiona en los enlaces:</p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle (click)="onSearchBySerieName('')" value="bold">Ver todos</mat-button-toggle>
+            <mat-button-toggle (click)="onSearchBySerieName('Breaking Bad')" value="italic">Breaking Bad</mat-button-toggle>
+            <mat-button-toggle (click)="onSearchBySerieName('Better Call Saul')" value="underline">Better Call Saul</mat-button-toggle>
+        </mat-button-toggle-group>
+
     <div>
         <app-search-character (filter)="onSearch($event)" (tryLuck)="onTryLuck($event)"></app-search-character>
     </div>

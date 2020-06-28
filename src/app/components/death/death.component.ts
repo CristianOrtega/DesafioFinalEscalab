@@ -26,7 +26,7 @@ export class DeathComponent implements OnInit {
     this.loading = false;
     this.deathNumber = 0;
     this.page = 1;
-    this.pageSize = 8;
+    this.pageSize = 9;
     this.singleDeath = null;
     this.deathList = [];
   }

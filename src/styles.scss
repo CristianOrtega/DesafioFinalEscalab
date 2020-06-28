@@ -10,8 +10,20 @@
     text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .spinner {
   margin: auto;
+}
+
+.login-input .mat-form-field-infix {
+  width: 100% !important;
 }
 
 
@@ -29,7 +41,11 @@
 
     .spinner {
       margin: auto;
-  }  
+    }  
+
+    .login-input .mat-form-field-infix {
+      width: 100% !important;
+    }
   
 }
 

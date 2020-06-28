@@ -1,5 +1,5 @@
 .character-card {
-    max-width: 700px;
+    max-width: 400px;
     margin: auto;
     margin-bottom: 15px;
     transition: all 0.5s;
@@ -8,3 +8,11 @@
 .character-list-item {
   justify-content: space-between;
 }
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  height: inherit !important;
+}
+
+/*.character-image {
+  height: 300px;
+}*/
