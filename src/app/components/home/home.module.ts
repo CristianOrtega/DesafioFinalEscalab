@@ -8,15 +8,13 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CharacterComponent } from './character/character.component';
 import { SearchCharacterComponent } from './search-character/search-character.component';
-import { CharacterDetailComponent } from './character-detail/character-detail.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent, 
     CharacterComponent, 
-    SearchCharacterComponent, 
-    CharacterDetailComponent
+    SearchCharacterComponent
   ],
   imports: [
     CommonModule,

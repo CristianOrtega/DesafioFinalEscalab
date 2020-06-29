@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +27,10 @@ const routes: Routes = [
       {
         path: 'login',
         loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'characterDetail/:id',
+        loadChildren: () => import('./components/character/character.module').then(m => m.CharacterModule)
       },
     ]
   },
