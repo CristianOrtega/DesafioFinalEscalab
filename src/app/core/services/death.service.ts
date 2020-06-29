@@ -12,7 +12,7 @@ export class DeathService {
   }
 
   // Servicio N°9
-   findAllDeaths() {
+  findAllDeaths() {
     return this.http.get<any>(`${environment.BREAKING_BAD_API}/deaths/`);
   }
 

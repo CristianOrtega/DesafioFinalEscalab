@@ -4,8 +4,10 @@ import { take } from 'rxjs/operators';
 
 import swal from 'sweetalert2';
 
-import { Character } from '../../core/model/character';
 import { CharacterService } from '../../core/services/character.service';
+
+import { Character } from '../../core/model/character';
+import { Filter } from '../../core/model/filter';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +27,6 @@ export class HomeComponent implements OnInit {
   constructor(private characterService: CharacterService) { 
     this.page = 1;
     this.pageSize = 8;
-    this.allCharactersAreShowed = true;
     this.characterList = [];
     this.serieName = '';
     this.loading = true;
@@ -35,36 +36,26 @@ export class HomeComponent implements OnInit {
     this.findAllCharacters();
   }
 
-
-  onSearchBySerieName(serie: string) : void {
-    this.loading = true;
-    if (serie === '') {
-      this.serieName = '';
-      this.allCharactersAreShowed = true;
-      this.findAllCharacters();
-    } else {
-      this.serieName = serie;
-      this.allCharactersAreShowed = false;
-      this.findCharacterByCategory(this.serieName);
+  onSearch(filter: Filter): void {
+    const { characterName, serieName } = filter;
+    
+    if (characterName !== '' && serieName !== '') {
+        this.findInMemoryData(characterName, serieName);
+        return;
     }
-  }
 
-  onSearch(name: string): void {
     this.resetValues();
-    if (this.allCharactersAreShowed) {
-        if (name !== '') {
-          this.findCharactersByName(name);
-        } else {
-          this.findAllCharacters();
-        } 
+
+    if (characterName === '' && serieName === '') {
+      this.findAllCharacters();
+    } else if (characterName !== '' && serieName === '') {
+      this.findCharactersByName(characterName);
+    } else if (characterName === '' && serieName !== '') {
+      this.findCharacterByCategory(serieName);
     } else {
-      if (name !== '') {
-        this.findAllCharacters();
-      } else {
-        this.findCharacterByCategory(this.serieName);
-      }
-      
+      this.findAllCharacters();
     }
+
   }
 
   onTryLuck(event: boolean): void {
@@ -107,14 +98,14 @@ export class HomeComponent implements OnInit {
         this.characterList = resp;
         this.totalRecords = this.characterList.length;
       } else {
-        swal.fire('Ups', 'No se encontró el personaje que estás buscando.', 'warning');
+        swal.fire('Ups', 'El personaje que intentas buscar no existe', 'warning');
         this.characterList = [];
       }
       this.loading = false;
     },
-      error => {
-        swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
-      });
+    error => {
+      swal.fire('Ha Ocurrido un error', 'Intente nuevamente, sí el problema persiste puede que el servicio no este funcionando.', 'error');
+    });
   }
 
   private findCharactersByLucky(): void {
@@ -129,11 +120,40 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  private findInMemoryData(characterName: string, serieName: string): void {
+    this.loading = true;
+
+    const areNameFound = ( { name }) => name.includes(characterName);
+    const charactersArrayByName = this.characterList.filter(areNameFound);
+
+    if (charactersArrayByName && charactersArrayByName.length > 0) {
+      this.characterList = [];
+      const areMemberOfSerie = ( { category }) => category === serieName;
+      const charactersArrayBySerie = charactersArrayByName.filter(areMemberOfSerie);
+
+      if (charactersArrayBySerie && charactersArrayBySerie.length > 0) {
+        charactersArrayBySerie.forEach(character => {
+          this.characterList.push(character);
+        });
+        this.loading = false;
+      } else {
+        swal.fire('Ups!', 'El personaje que intentas buscar no pertenece a la serie seleccionada.', 'error');
+        this.loading = false;
+      }
+
+    } else {
+      this.characterList = [];
+      swal.fire('Ups!', 'El personaje que intentas buscar no existe', 'error');
+      this.loading = false;
+    }
+
+  }
+
   private resetValues(): void {
     this.loading = true;
-    this.page = 1;
     this.characterList = [];
     this.totalRecords = 0;
+    this.page = 1;
   }
 
 }
