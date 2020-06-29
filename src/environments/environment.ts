@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   BREAKING_BAD_API: 'https://www.breakingbadapi.com/api',
   firebaseConfig: {
-    apiKey: "AIzaSyBY6iLUrHod8E3lCeKz64rNBQz7eNPEzpw",
-    authDomain: "breaking-bad-api.firebaseapp.com",
-    databaseURL: "https://breaking-bad-api.firebaseio.com",
-    projectId: "breaking-bad-api",
-    storageBucket: "breaking-bad-api.appspot.com",
-    messagingSenderId: "361762767967",
-    appId: "1:361762767967:web:82e15eb0412593c86507ea",
-    measurementId: "G-9C217ZK32X"
+    apiKey: "AIzaSyBkkkUo5fZGaTxggKjLcDOYVxvefgrTgYg",
+    authDomain: "breaking-bad-api-2bf63.firebaseapp.com",
+    databaseURL: "https://breaking-bad-api-2bf63.firebaseio.com",
+    projectId: "breaking-bad-api-2bf63",
+    storageBucket: "breaking-bad-api-2bf63.appspot.com",
+    messagingSenderId: "756681497186",
+    appId: "1:756681497186:web:76922dcc68494cef13cf3b",
+    measurementId: "G-LW1SJ8X188"
   }
 };
 

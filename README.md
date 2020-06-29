@@ -14,4 +14,4 @@ _Consumir una API con Angular aplicando lo visto en el curso. Se deben consumir 
 * Rutas y LazyLoading para optimizaciones: 20%.
 * Aplicar buenas prácticas vistas en el curso: 20%.
 
-Para acceder a la demo ingresa al siguiente link [Breaking Bad API](https://breaking-bad-api.web.app/home)
+Para acceder a la demo ingresa al siguiente link [Breaking Bad API](https://breaking-bad-api-2bf63.web.app/)
