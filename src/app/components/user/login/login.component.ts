@@ -28,12 +28,10 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.authService.login(form)
       .then(res => {
-          debugger;
           swal.fire('Enhorabuena', 'Ahora puedes ver los spoilers de la serie!', 'success');
           this.router.navigate(['/deaths']);
       })
       .catch(error => {
-          debugger;
           if (error.code === 'auth/wrong-password') {
             swal.fire('Ha Ocurrido un error', 'La contraseña ingresada no es válida', 'error');
           } else {
